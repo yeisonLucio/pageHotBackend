@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Repository\CrudRepository;
+use App\Repository\ServicioRepository;
 use Illuminate\Http\Request;
 
 class ServicioController extends Controller
 {
     protected $CrudRepository;
-    public function __construct(CrudRepository $crudRepository){
+    protected $ServicioRepository;
+    public function __construct(CrudRepository $crudRepository, ServicioRepository $servicioRepository){
         $this->CrudRepository = $crudRepository;
+        $this->ServicioRepository = $servicioRepository;
 
     }
     /**
@@ -76,5 +79,13 @@ class ServicioController extends Controller
         $servicio = $this->CrudRepository->delete($id,'App\Models\Servicio');
 
         return $servicio;
+    }
+
+
+    public function getServiciosPorId($idUsuario){
+        
+        $servicios = $this->ServicioRepository->getServiciosPorId($idUsuario);
+
+        return $servicios;
     }
 }

@@ -42,8 +42,8 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsTo('App\Models\Membresia_usuario');
 
     }
-    public function Anuncio(){
-        return $this->belongsTo('App\Models\Anuncio');
+    public function anuncios(){
+        return $this->hasMany('App\Models\Anuncio');
 
     }
 

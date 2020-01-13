@@ -30,7 +30,7 @@ class Users extends Migration
             $table->foreign('departamento_id')->references('id')->on('departamento');
             $table->bigInteger('ciudad_id')->unsigned()->index();
             $table->foreign('ciudad_id')->references('id')->on('ciudad');
-            $table->string('rol');
+            $table->string('rol')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

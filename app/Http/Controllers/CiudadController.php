@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Repository\CiudadRepository;
 use App\Repository\CrudRepository;
 use Illuminate\Http\Request;
 
 class CiudadController extends Controller
 {
     protected $CrudRepository;
-    public function __construct(CrudRepository $crudRepository){
+    protected $CiudadRepository;
+
+    public function __construct(CrudRepository $crudRepository, CiudadRepository $ciudadRepository){
         $this->CrudRepository = $crudRepository;
+        $this->CiudadRepository = $ciudadRepository;
 
     }
     
@@ -79,5 +83,12 @@ class CiudadController extends Controller
         $ciudad = $this->CrudRepository->delete($id,'App\Models\Ciudad');
 
         return $ciudad;
+    }
+
+    public function municipiosPorDepartamento($departamento_id){
+        
+        $ciudades = $this->CiudadRepository->ciudadesPorDepartamento($departamento_id);
+        
+        return $ciudades;
     }
 }

@@ -30,7 +30,7 @@ class CrudRepository {
             $instancia->usuario_id = $idUser;
         }
         $instancia->save();
-        return response()->json(['status' => 'success'], 200);
+        return response()->json(['status' => 'success', 'id'=> $instancia->id], 200 );
 
     }
 

@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Repository\CrudRepository;
+use App\Repository\DepartamentoRepository;
 use Illuminate\Http\Request;
 
 class DepartamentoController extends Controller
 {
     protected $CrudRepository;
-    public function __construct(CrudRepository $crudRepository){
+    protected $DepartamentoRepository;
+    public function __construct(CrudRepository $crudRepository, DepartamentoRepository $departamentoRepository){
         $this->CrudRepository = $crudRepository;
+        $this->DepartamentoRepository = $departamentoRepository;
 
-    D
-    
+    }
     /**
      * Display a listing of the resource.
      *
@@ -79,5 +81,13 @@ class DepartamentoController extends Controller
         $departamento = $this->CrudRepository->delete($id,'App\Models\Departamento');
 
         return $departamento;
+    }
+
+    public function departamentosPorPais($pais_id){
+
+        $departamentos = $this->DepartamentoRepository->obtenerDepartamentosPorPais($pais_id);
+
+        return $departamentos;
+        
     }
 }

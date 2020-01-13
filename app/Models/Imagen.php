@@ -10,8 +10,8 @@ class Imagen extends Model
 
     protected $fillable = ['ruta','miniaturaAnuncio'];
 
-    public function Anuncio(){
-        return $this->hasMany('App\Models\Anuncio');
+    public function anuncio(){
+        return $this->belongsTo('App\Models\Anuncio');
 
     }
 }
